@@ -108,7 +108,7 @@ export default function Home() {
                     onKeyDown={handleKeyDown}
                     placeholder={
                       session
-                        ? "Search for articles, videos, topics..."
+                        ? "Search your knowledge base..."
                         : "Sign in to search"
                     }
                     disabled={!session}
@@ -170,7 +170,7 @@ export default function Home() {
             {!session && !isPending && (
               <div className="mt-6 flex flex-col items-center gap-3 text-center">
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                  You need to sign in to search our content
+                  Sign in to search the indexed knowledge base
                 </p>
                 <button
                   onClick={() =>

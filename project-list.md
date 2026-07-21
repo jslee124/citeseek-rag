@@ -1,26 +1,34 @@
-## Overall
+# CiteSeek product brief
 
-This app is a tool that ingests all WDS videos and blog articles. These videos/articles are chunked using proper hierarchy and then converted to vector embeddings via AI for easy lookup. Later the user will search for results and their search query will be converted to a vector embedding to search our vector database.
+## Goal
 
-## User Flow
+CiteSeek helps a user search a personal knowledge collection and eventually
+receive an answer that is grounded in, and linked back to, the original
+sources.
 
-1. User logs in with GitHub so we can properly track/rate limit users to avoid abuse and cost issues
-2. User searches for a topic they want to learn
-3. User chooses a result from the list to view and it opens that result in a new page at the location where the topic is covered
-4. If user sends too many searches in a specified time they will be rate limited
+## Current product
 
-##  UI
+1. A user signs in with GitHub.
+2. The user enters a natural-language search query.
+3. CiteSeek embeds the query and compares it with stored content chunks.
+4. Results link to the matching article text or YouTube timestamp.
+5. Searches are recorded for rate limiting.
 
-- Single page with search bar
-- Results show up below search bar with link to go to source material
-  - Results have an image, title, description, match %
+The current application is semantic retrieval, not yet full RAG: it returns
+matching sources but does not generate an answer from them.
 
-## Ingestion
+## Target product
 
-The ingestion process will be long running background tasks that utilize the YouTube API for videos and direct HTML processing for the articles. Articles will be chunked in proper hierarchy based on headings while videos will be chunked based on the captions in a sentence by sentence chunking.
+- Import Markdown, PDF, web pages, video transcripts, and code.
+- Normalize every source into a shared document representation.
+- Use a hosted, non-OpenAI embedding provider.
+- Retrieve and optionally rerank relevant chunks.
+- Generate an answer that cites the chunks used as evidence.
+- Evaluate retrieval quality against a repeatable question set.
 
-Vercel workflows will be used to ensure these ingestion processes are durable and able to retry on failure
+## Product principles
 
-## Database
-
-We will need to store the content (articles/videos with title, description, thumbnail, etc.), chunks (vector embeddings), user details, rate limit information, historical search information
+- Sources remain visible and traceable.
+- Retrieval quality is measured, not judged only by intuition.
+- Ingestion, embedding, retrieval, and generation stay replaceable.
+- The learning path favors one verified end-to-end loop over feature count.
