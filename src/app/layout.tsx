@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BlogSuggester - Search blog content",
-  description: "Search through indexed articles and videos using semantic similarity",
+  title: "CiteSeek - Search knowledge with sources",
+  description:
+    "Search indexed knowledge with semantic retrieval and trace every result back to its source",
 };
 
 export default function RootLayout({

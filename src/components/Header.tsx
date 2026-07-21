@@ -1,13 +1,20 @@
 "use client"
 
 import { useSession, signIn, signOut } from "@/lib/auth/client"
+import Link from "next/link"
 
 export default function Header() {
   const { data: session, isPending } = useSession()
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-zinc-200 bg-white/80 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/80">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-end px-4 sm:px-6">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <Link
+          href="/"
+          className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100"
+        >
+          CiteSeek
+        </Link>
         {isPending ? (
           <div className="h-10 w-10 animate-pulse rounded-full bg-zinc-200 dark:bg-zinc-800" />
         ) : session ? (
